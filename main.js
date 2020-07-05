@@ -63,14 +63,51 @@ const lastedTenYears = companies.filter(company => (company.end - company.start 
 //Map
 //create array of company names
 
-const companyNames = companies.map(function(company){
-    return company.name;
+const testMap = companies.map(function(company){
+    return` ${company.name} [${company.start}] - [${company.end}]` ;
 });
 
-console.log(companyNames);
+const testMap = companies.map(company =>` ${company.name} [${company.start}] - [${company.end}]`);
 
+//square of ages
+const agesSquare = ages.map(age => Math.sqrt(age))
 
+//chain map
+const agesSquare = ages
+    .map(age => Math.sqrt(age))
+    .map(age => age * 2);
 
 //Sort
+const sortedcompanies = companies.sort(function(c1, c2){
+    if(c1.start > c2.start) {
+        return 1;
+    } else{
+        return -1;
+    }
+});
 
-//Reduce
+const sortedCompanies = companies.sort( (a, b) => (a.start > b.start ? 1 : -1));
+
+
+//descend
+const sortAges = ages.sort((a,b) => a - b);
+
+//ascendent
+const sortAges = ages.sort((a,b) => b - a);
+
+//Reduce   
+let ageSum = 0;
+for (let index = 0; index < ages.length; index++) {
+    ageSum += ages[index];    
+}
+
+const ageSum = ages.reduce(function(total, age){
+    return total + age;
+}, 0);
+
+//gettting all ages using reduce
+const ageSum = ages.reduce((total, age) => total + age , 0);
+
+//get all yeas for all companies
+
+const totalYears = companies.reduce((total ,company) => total + (company.end - company.start), 0);
